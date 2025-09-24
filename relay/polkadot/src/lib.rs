@@ -226,6 +226,12 @@ impl frame_system::Config for Runtime {
 	type PostTransactions = ();
 }
 
+impl pallet_sudo::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type RuntimeCall = RuntimeCall;
+	type WeightInfo = ();
+}
+
 parameter_types! {
 	pub MaximumSchedulerWeight: Weight = Perbill::from_percent(80) *
 		BlockWeights::get().max_block;
@@ -291,7 +297,7 @@ impl pallet_preimage::Config for Runtime {
 parameter_types! {
 	pub EpochDuration: u64 = prod_or_fast!(
 		EPOCH_DURATION_IN_SLOTS as u64,
-		2 * MINUTES as u64,
+		1 * MINUTES as u64,
 		"DOT_EPOCH_DURATION"
 	);
 	pub const ExpectedBlockTime: Moment = MILLISECS_PER_BLOCK;
@@ -1659,6 +1665,9 @@ construct_runtime! {
 		// refer to block<N>. See issue #160 for details.
 		Mmr: pallet_mmr = 201,
 		BeefyMmrLeaf: pallet_beefy_mmr = 202,
+
+		// Required for chainflip localnet & testnet polkadot network
+		Sudo: pallet_sudo = 255,
 	}
 }
 
