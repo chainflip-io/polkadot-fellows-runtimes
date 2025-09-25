@@ -83,6 +83,7 @@ pallet-utility = { workspace = true }
 frame-election-provider-support = { workspace = true }
 pallet-xcm = { workspace = true }
 pallet-xcm-benchmarks = { optional = true, workspace = true }
+pallet-sudo = { workspace = true }
 
 frame-benchmarking = { optional = true, workspace = true }
 frame-try-runtime = { optional = true, workspace = true }
@@ -126,6 +127,7 @@ substrate-wasm-builder = { workspace = true, optional = true }
 default = ["std"]
 no_std = []
 only-staking = []
+fast-bouncer = ["polkadot-runtime-constants/std"]
 std = [
 	"authority-discovery-primitives/std",
 	"babe-primitives/std",

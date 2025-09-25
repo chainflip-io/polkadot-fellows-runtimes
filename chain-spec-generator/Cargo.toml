@@ -30,6 +30,7 @@ people-kusama-runtime = { workspace = true, optional = true }
 people-polkadot-runtime = { workspace = true, optional = true }
 
 [features]
+fast-bouncer = ["polkadot-runtime?/fast-bouncer", "asset-hub-polkadot-runtime?/fast-bouncer"]
 default = ["all-runtimes"]
 fast-runtime = ["kusama-runtime?/fast-runtime", "polkadot-runtime?/fast-runtime"]
 runtime-benchmarks = [

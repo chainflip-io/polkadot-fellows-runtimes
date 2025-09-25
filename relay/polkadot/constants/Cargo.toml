@@ -22,8 +22,11 @@ sp-trie = { workspace = true, optional = true }
 
 xcm-builder = { workspace = true }
 
+envparse = "0.1.0"
+
 [features]
 default = ["std"]
+fast-bouncer = []
 std = [
 	"codec/std",
 	"frame-support/std",

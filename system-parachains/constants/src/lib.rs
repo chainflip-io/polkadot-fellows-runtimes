@@ -36,7 +36,7 @@ use sp_runtime::Perbill;
 /// slot_duration()`.
 ///
 /// Change this to adjust the block time.
-pub const MILLISECS_PER_BLOCK: u64 = 12000;
+pub const MILLISECS_PER_BLOCK: u64 = envparse::parse_env!("ASSETHUB_MILLISECS_PER_BLOCK" as u64 else 12000);
 pub const SLOT_DURATION: u64 = MILLISECS_PER_BLOCK;
 
 // Time is measured by number of blocks.
@@ -70,8 +70,8 @@ pub mod async_backing {
 	use sp_runtime::Perbill;
 
 	/// The average expected block time that we are targeting.
-	pub const MILLISECS_PER_BLOCK: u64 = 6_000;
-	pub const SLOT_DURATION: u64 = 12_000;
+	pub const MILLISECS_PER_BLOCK: u64 = envparse::parse_env!("POLKADOT_MILLISECS_PER_BLOCK" as u64 else 6_000);
+	pub const SLOT_DURATION: u64 = envparse::parse_env!("ASSETHUB_MILLISECS_PER_BLOCK" as u64 else 12_000);
 
 	// Time is measured by number of blocks.
 	pub const MINUTES: BlockNumber = 60_000 / (MILLISECS_PER_BLOCK as BlockNumber);
